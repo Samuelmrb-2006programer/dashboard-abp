@@ -67,15 +67,15 @@ export default function ComparacionGrupos() {
             {datos.map(d => (
               <tr key={d.nombre}>
                 <td><span className="color-indicator" style={{ background: PALETA[d.nombre], color: PALETA[d.nombre] }}></span>{d.nombre}</td>
-                <td className="num">{d.S.toFixed(4)}</td>
-                <td className="num">{d.K.toFixed(4)}</td>
-                <td className="num">{d.K0.toFixed(4)}</td>
-                <td className="num">{d.a.toFixed(4)}</td>
-                <td className="num">{d.b.toFixed(4)}</td>
-                <td className="num">{d.RMSE.toFixed(4)}</td>
+                <td className="num">{d.S.toFixed(2)}</td>
+                <td className="num">{d.K.toFixed(2)}</td>
+                <td className="num">{d.K0.toFixed(2)}</td>
+                <td className="num">{d.a.toFixed(2)}</td>
+                <td className="num">{d.b.toFixed(2)}</td>
+                <td className="num">{d.RMSE.toFixed(2)}</td>
                 <td className={`num${d.R2 < 0 ? ' r2-negativo' : ''}`}>
                   {d.R2 < 0 && <span className="icono-alerta" role="img" aria-label="alerta">⚠</span>}
-                  {d.R2.toFixed(4)}
+                  {d.R2.toFixed(2)}
                 </td>
               </tr>
             ))}

@@ -74,8 +74,8 @@ export default function ModeloVsDatos({ datos }) {
 
   const metricas = useMemo(() => {
     return {
-      rmse: rmse(K_observado, K_predicho).toFixed(4),
-      r2: r2(K_observado, K_predicho).toFixed(4)
+      rmse: rmse(K_observado, K_predicho).toFixed(2),
+      r2: r2(K_observado, K_predicho).toFixed(2)
     };
   }, [K_observado, K_predicho]);
 
@@ -108,7 +108,7 @@ export default function ModeloVsDatos({ datos }) {
         </label>
         <label>
           <span className="control-nombre">b (tasa olvido)</span>
-          <span className="valor-slider">{b.toFixed(3)}</span>
+          <span className="valor-slider">{b.toFixed(2)}</span>
           <input type="range" aria-label="b, tasa de olvido" min="0" max="0.2" step="0.001" value={b} style={rellenoSlider(b, 0, 0.2)} onChange={e => setB(+e.target.value)} />
         </label>
         <label>
