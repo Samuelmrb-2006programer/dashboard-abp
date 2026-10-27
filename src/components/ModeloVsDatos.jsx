@@ -149,7 +149,7 @@ export default function ModeloVsDatos({ datos }) {
           <CartesianGrid strokeDasharray="2 6" vertical={false} />
           <XAxis dataKey="semana" tickLine={false} label={{ value: 'Semana', position: 'insideBottom', offset: -5 }} />
           <YAxis tickLine={false} label={{ value: 'K', angle: -90, position: 'insideLeft' }} domain={[0, 1]} />
-          <Tooltip contentStyle={estiloTooltip} labelStyle={etiquetaTooltip} itemStyle={itemTooltip} />
+          <Tooltip contentStyle={estiloTooltip} labelStyle={etiquetaTooltip} itemStyle={itemTooltip} formatter={v => (typeof v === 'number' ? v.toFixed(2) : v)} />
           <Legend iconType="circle" />
           <Line name="K observado" legendType="circle" type="monotone" dataKey="K_obs" stroke={color} strokeWidth={0} dot={{ r: 4, fill: 'none', stroke: color, strokeWidth: 2 }} activeDot={{ r: 5, fill: 'none', stroke: color, strokeWidth: 2 }} connectNulls={false} />
           <Line name="K modelo" legendType="plainline" type="monotone" dataKey="K_pred" stroke={color} strokeWidth={2} dot={false} filter="url(#glow-linea-modelo)" />

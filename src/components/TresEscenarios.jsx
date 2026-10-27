@@ -133,7 +133,7 @@ export default function TresEscenarios() {
           <CartesianGrid strokeDasharray="2 6" vertical={false} />
           <XAxis dataKey="semana" tickLine={false} label={{ value: 'Semana', position: 'insideBottom', offset: -5 }} />
           <YAxis tickLine={false} label={{ value: 'K', angle: -90, position: 'insideLeft' }} domain={[0, 1]} />
-          <Tooltip contentStyle={estiloTooltip} labelStyle={etiquetaTooltip} itemStyle={itemTooltip} />
+          <Tooltip contentStyle={estiloTooltip} labelStyle={etiquetaTooltip} itemStyle={itemTooltip} formatter={v => (typeof v === 'number' ? v.toFixed(2) : v)} />
           <Legend iconType="plainline" />
           <Line name="Estudio nulo" type="monotone" dataKey="nulo" stroke="#5c6f87" strokeWidth={1.5} strokeDasharray="6 4" dot={false} />
           <Line name="Estudio constante" type="monotone" dataKey="constante" stroke="#00cfe0" strokeWidth={2} dot={false} filter="url(#glow-linea-escenario)" />

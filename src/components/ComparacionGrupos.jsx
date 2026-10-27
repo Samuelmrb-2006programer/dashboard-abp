@@ -88,7 +88,7 @@ export default function ComparacionGrupos() {
           <CartesianGrid strokeDasharray="2 6" vertical={false} />
           <XAxis dataKey="grupo" tickLine={false} tickFormatter={g => g.charAt(0).toUpperCase() + g.slice(1)} label={{ value: 'Grupo', position: 'insideBottom', offset: -5 }} />
           <YAxis tickLine={false} label={{ value: 'R²', angle: -90, position: 'insideLeft' }} />
-          <Tooltip contentStyle={estiloTooltip} labelStyle={etiquetaTooltip} itemStyle={itemTooltip} />
+          <Tooltip contentStyle={estiloTooltip} labelStyle={etiquetaTooltip} itemStyle={itemTooltip} formatter={v => (typeof v === 'number' ? v.toFixed(2) : v)} />
           <Legend iconType="square" />
           <Bar dataKey="R2" name="R²" radius={[3, 3, 0, 0]}>
             {datosBarras.map((entry, index) => (
