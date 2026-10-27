@@ -1,5 +1,3 @@
-import { COLORES_GRUPOS } from '../data';
-
 export default function Resumen() {
   return (
     <div className="resumen">
@@ -41,11 +39,6 @@ export default function Resumen() {
           <li><strong>a</strong> tasa de aprendizaje (por semana)</li>
           <li><strong>b</strong> tasa de olvido (por semana)</li>
         </ul>
-        <div className="leyenda-grupos">
-          <span className="chip-grupo"><span className="punto" style={{ background: COLORES_GRUPOS.bajo }}></span>bajo</span>
-          <span className="chip-grupo"><span className="punto" style={{ background: COLORES_GRUPOS.constante }}></span>constante</span>
-          <span className="chip-grupo"><span className="punto" style={{ background: COLORES_GRUPOS.concentrado }}></span>concentrado</span>
-        </div>
       </article>
     </div>
   );
