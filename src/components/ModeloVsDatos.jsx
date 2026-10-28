@@ -34,6 +34,19 @@ const itemTooltip = {
   padding: '3px 0'
 };
 
+const renderLeyenda = ({ payload }) => (
+  <div style={{ display: 'flex', justifyContent: 'center', gap: 20, paddingTop: 8 }}>
+    {payload.map(entrada => (
+      <span key={entrada.dataKey} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, color: 'var(--texto)', fontFamily: 'var(--font-body)', fontSize: '12.5px' }}>
+        <span style={entrada.dataKey === 'K_obs'
+          ? { width: 11, height: 11, borderRadius: '50%', border: `2px solid ${entrada.color}`, boxSizing: 'border-box' }
+          : { width: 11, height: 11, borderRadius: '50%', background: entrada.color }} />
+        {entrada.value}
+      </span>
+    ))}
+  </div>
+);
+
 const rellenoSlider = (v, min, max) => {
   const pct = ((v - min) / (max - min)) * 100;
   return {
@@ -150,9 +163,9 @@ export default function ModeloVsDatos({ datos }) {
           <XAxis dataKey="semana" tickLine={false} label={{ value: 'Semana', position: 'insideBottom', offset: -5 }} />
           <YAxis tickLine={false} label={{ value: 'K', angle: -90, position: 'insideLeft' }} domain={[0, 1]} />
           <Tooltip contentStyle={estiloTooltip} labelStyle={etiquetaTooltip} itemStyle={itemTooltip} formatter={v => (typeof v === 'number' ? v.toFixed(2) : v)} />
-          <Legend iconType="circle" />
-          <Line name="K observado" legendType="circle" type="monotone" dataKey="K_obs" stroke={color} strokeWidth={0} dot={{ r: 4, fill: 'none', stroke: color, strokeWidth: 2 }} activeDot={{ r: 5, fill: 'none', stroke: color, strokeWidth: 2 }} connectNulls={false} />
-          <Line name="K modelo" legendType="plainline" type="monotone" dataKey="K_pred" stroke={color} strokeWidth={2} dot={false} filter="url(#glow-linea-modelo)" />
+          <Legend content={renderLeyenda} />
+          <Line name="K observado" type="monotone" dataKey="K_obs" stroke={color} strokeWidth={0} dot={{ r: 4, fill: 'none', stroke: color, strokeWidth: 2 }} activeDot={{ r: 5, fill: 'none', stroke: color, strokeWidth: 2 }} connectNulls={false} />
+          <Line name="K modelo" type="monotone" dataKey="K_pred" stroke={color} strokeWidth={2} dot={false} filter="url(#glow-linea-modelo)" />
         </LineChart>
       </ResponsiveContainer>
     </div>
